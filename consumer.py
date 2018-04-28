@@ -4,7 +4,7 @@ def pdf_process_function(msg):
     print(" PDF processing")
     print(" Received %r" % msg)
     
-    time.sleep(5) # delays for 5 seconds
+    #time.sleep(5) # delays for 5 seconds
     print(" PDF processing finished");
     return;
 
