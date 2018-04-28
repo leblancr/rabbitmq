@@ -17,16 +17,21 @@ channel.queue_declare(queue='pdfprocess') # Declare a queue
 
 # create a function which is called on incoming messages
 def callback(ch, method, properties, body):
-    pdf_process_function(body)
-
+    print("In callback function");
+    print("ch: {}\n" \
+    "method: {}\n" \
+    "properties: {}\n" \
+    "body: {}\n" \
+    .format(ch, method, properties, body))
+     
+    #pdf_process_function(body)
+    
+    
 # set up subscription on the queue
-channel.basic_consume(callback,
-  queue='pdfprocess',
-  no_ack=True)
+channel.basic_consume(callback, queue='pdfprocess', no_ack=True)
 
 # start consuming (blocks)
 print("start_consuming");
-    
 channel.start_consuming()
 print("done consuming");
 connection.close()
